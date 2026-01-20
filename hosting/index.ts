@@ -82,6 +82,9 @@ const hostOrigin = `${scheme}://${host}`;
 const reponse = await sendMessage(window.parent, { _type: 'pdom-init' }, {
     origin: hostOrigin,
     needsResponse: true,
+    isValidResponse(data) {
+        return !!data && !!data["nodeOuterHTML"];
+    },
 });
 const {
     nodeOuterHTML,
